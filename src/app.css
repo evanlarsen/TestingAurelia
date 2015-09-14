@@ -1,0 +1,4 @@
+.js-isUnfocused {
+  -webkit-filter: blur(3px) contrast(.8) brightness(.8);
+  filter: blur(3px) contrast(.8) brightness(.8);
+}

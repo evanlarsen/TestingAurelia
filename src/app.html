@@ -1,0 +1,24 @@
+<template>
+  <require from="bootstrap/css/bootstrap.css"></require>
+  <require from="app.css"></require>
+  <require from="nav-bar.css"></require>
+
+  <nav class="root-navbar" role="navigation">
+    <button class="root-navbar-toggle pull-left" click.trigger="toggleMenu()" type="button">
+      <span class="sr-only">Toggle Navigation</span>
+      <i class="fa fa-bars"></i>
+    </button>
+    <span class="root-page-title">${router.title}</span>
+    <i if.bind="router.isNavigating" class="fa fa-spinner fa-spin fa-2x pull-right"></i>
+  </nav>
+
+  <ul class="slidemenu ${isRootMenuShown ? 'js-show' : 'js-hide'}">
+    <li repeat.for="row of router.navigation" class="menu-item ${row.isActive ? 'active' : ''}">
+      <a class="slidemenu-link" click.trigger="$parent.toggleMenu(row)" href.bind="row.href">${row.title}</a>
+    </li>
+  </ul>
+
+  <div class="page-host ${isRootMenuShown ? 'js-isUnfocused' : ''}">
+    <router-view></router-view>
+  </div>
+</template>
